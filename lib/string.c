@@ -1072,3 +1072,17 @@ void fortify_panic(const char *name)
 	BUG();
 }
 EXPORT_SYMBOL(fortify_panic);
+
+
+#ifndef __HAVE_ARCH_STPCPY
+/**
+ * stpcpy - copy a string, returning the pointer to the terminating NUL
+ */
+char *stpcpy(char *__restrict dest, const char *__restrict src)
+{
+	while ((*dest = *src++) != '\0')
+		dest++;
+	return dest;
+}
+EXPORT_SYMBOL(stpcpy);
+#endif
