@@ -453,3 +453,7 @@ static inline void memcpy_and_pad(void *dest, size_t dest_len,
 }
 
 #endif /* _LINUX_STRING_H_ */
+
+#ifndef __HAVE_ARCH_STPCPY
+char *stpcpy(char *__restrict dest, const char *__restrict src);
+#endif
